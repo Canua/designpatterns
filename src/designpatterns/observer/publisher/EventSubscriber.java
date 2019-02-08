@@ -1,7 +1,8 @@
 package designpatterns.observer.publisher;
 
-public class EventSubscriber implements Observer {
-	private String newsString;
+public class EventSubscriber implements Observer, DisplaySubscriber {
+	private String title;
+	private String news;
 	private Publisher publisher;
 
 	public EventSubscriber(Publisher publisher) {
@@ -11,12 +12,14 @@ public class EventSubscriber implements Observer {
 
 	@Override
 	public void update(String title, String news) {
-		this.newsString = title + " \n -------- \n " + news;
+		this.title = title;
+		this.news = news;
 		display();
 	}
 
+	@Override
 	public void display() {
-		System.out.println("-------이벤트----------\n" + newsString);
+		System.out.println("News title : " + title + "\n" 
+				+ "News Contents : " + news);
 	}
-
 }

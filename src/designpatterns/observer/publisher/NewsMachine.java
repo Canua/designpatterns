@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class NewsMachine implements Publisher {
 	private String title;
 	private String news;
-	private ArrayList<Observer> observers;
+	private ArrayList observers;
 
 	public NewsMachine() {
-		observers = new ArrayList();
+		observers = new ArrayList(); // ArrayList 생성
 	}
 
 	@Override
@@ -19,13 +19,18 @@ public class NewsMachine implements Publisher {
 	@Override
 	public void delete(Observer observer) {
 		int i = observers.indexOf(observer);
-		observers.remove(i);
-		System.out.println("삭제된 후 observers의 개수 : " + observers.size());
+		if(i < 0) {
+			System.out.println("해당 Observer가 존재하지 않습니다.");
+		} else {
+			observers.remove(i);
+			System.out.println("해당 Observer를 삭제하였습니다.");	
+		}
 	}
 
 	@Override
-	public void notifyObserver() {
-		for (Observer observer : observers) {
+	public void notifyObserver() { // 출력
+		for (int i = 0; i < observers.size(); i++) {
+			Observer observer = (Observer) observers.get(i);
 			observer.update(title, news);
 		}
 	}
