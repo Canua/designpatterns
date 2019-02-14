@@ -9,7 +9,7 @@ public class mainApp {
 		newsMachine.setNewsInfo("봄날", "여러분 봄입니다.");
 
 		newsMachine.delete(annulSubscriber);
-		newsMachine.setNewsInfo("겨울", "춥워요.");
+		newsMachine.setNewsInfo("겨울", "추워요.");
 
 	}
 }
